@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="تغير كلمة المرور"
+        android:id="@+id/item1" />
+    <item
+        android:title="تغير رقم الهاتف"
+        android:id="@+id/item2"/>
+    <item
+        android:title="تسجيل الخروج"
+        android:id="@+id/item3"/>
+</menu>
