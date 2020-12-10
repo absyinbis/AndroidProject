@@ -2,6 +2,7 @@ package com.example.libyaproject.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,10 @@ public class SearchFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(TextUtils.isEmpty(searchText.getText())){
+                            Snackbar.make(v, "الرجاء ادخال جميع الحقول", Snackbar.LENGTH_LONG).show();
+                            return;
+                        }
                         loading.startLoading();
 
                         thread = new Thread() {

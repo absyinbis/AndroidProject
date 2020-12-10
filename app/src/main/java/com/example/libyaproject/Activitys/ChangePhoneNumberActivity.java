@@ -2,6 +2,7 @@ package com.example.libyaproject.Activitys;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,10 @@ public class ChangePhoneNumberActivity extends Activity {
         ChangePhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(TextUtils.isEmpty(phoneNumber.getText())){
+                    Snackbar.make(view, "الرجاء ادخال جميع الحقول", Snackbar.LENGTH_LONG).show();
+                    return;
+                }
                 thread = new Thread() {
                     @Override
                     public void run() {

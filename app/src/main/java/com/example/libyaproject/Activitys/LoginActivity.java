@@ -3,6 +3,7 @@ package com.example.libyaproject.Activitys;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,10 @@ public class LoginActivity extends Activity {
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if(TextUtils.isEmpty(username.getText()) || TextUtils.isEmpty(password.getText())){
+                    Snackbar.make(v, "الرجاء ادخال جميع الحقول", Snackbar.LENGTH_LONG).show();
+                    return;
+                }
                 loading.startLoading();
                   thread=new Thread(){
                     @Override
