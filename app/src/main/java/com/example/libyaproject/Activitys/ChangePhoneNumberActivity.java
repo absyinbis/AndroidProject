@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Conn;
 import com.example.libyaproject.Models.UserModel;
 import com.example.libyaproject.R;
@@ -57,7 +57,7 @@ public class ChangePhoneNumberActivity extends Activity {
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
-                            result = Conn.sendHttpRequest(data, Absy.url + "andriod/ChangePhoneNumber.php");
+                            result = Conn.sendHttpRequest(data, Utils.url + "andriod/ChangePhoneNumber.php");
                             Snackbar.make(view, "لقد تم تغير رقم الهاتف", Snackbar.LENGTH_LONG).show();
                         }
                         else

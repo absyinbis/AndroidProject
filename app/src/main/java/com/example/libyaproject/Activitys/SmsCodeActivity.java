@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Conn;
 import com.example.libyaproject.Loading;
 import com.example.libyaproject.Models.UserModel;
@@ -51,7 +51,7 @@ public class SmsCodeActivity extends Activity {
                 thread = new Thread(){
                     @Override
                     public void run() {
-                        if(Absy.isInternetWorking()){
+                        if(Utils.isInternetWorking()){
                         try {
                             data = URLEncoder.encode("code", "UTF-8")
                                     + "=" + URLEncoder.encode(code.getText().toString().trim(), "UTF-8");
@@ -60,7 +60,7 @@ public class SmsCodeActivity extends Activity {
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
-                        result = Conn.sendHttpRequest(data, Absy.url+"andriod/CheckCode.php");
+                        result = Conn.sendHttpRequest(data, Utils.url+"andriod/CheckCode.php");
                         if(result.equals("yes"))
                             startActivity(intent);
                         else

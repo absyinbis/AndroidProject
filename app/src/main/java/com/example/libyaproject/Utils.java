@@ -11,15 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class Absy {
+public class Utils {
 
 
-    public static String url = "https://absyinbis.000webhostapp.com/";
+    public static String url = "http://192.168.43.222:8012/LibyaProject/";
 
     public static boolean isInternetWorking() {
         boolean success = false;
@@ -90,7 +93,22 @@ public class Absy {
         return arrayList;
     }
 
-    public static boolean isValidPassword(String password) {
-        return Pattern.matches("",password);
+    public static String md5(String input){
+        String result = input;
+        if(input != null) {
+            MessageDigest md = null; //or "SHA-1"
+            try {
+                md = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            md.update(input.getBytes());
+            BigInteger hash = new BigInteger(1, md.digest());
+            result = hash.toString(16);
+            while(result.length() < 32) { //40 for SHA-1
+                result = "0" + result;
+            }
+        }
+        return result;
     }
 }

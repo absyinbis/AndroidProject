@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Activitys.CarStolenActivity;
 import com.example.libyaproject.Activitys.WantedActivity;
 import com.example.libyaproject.Conn;
@@ -59,14 +59,14 @@ public class SearchFragment extends Fragment {
                         thread = new Thread(){
                             @Override
                             public void run() {
-                                if(Absy.isInternetWorking()){
+                                if(Utils.isInternetWorking()){
                                 try {
                                     data = URLEncoder.encode("searchtext", "UTF-8")
                                             + "=" + URLEncoder.encode(searchText.getText().toString().trim(), "UTF-8");
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
-                                result = Conn.sendHttpRequest(data, Absy.url+"andriod/CheckCarStolen.php");
+                                result = Conn.sendHttpRequest(data, Utils.url+"andriod/CheckCarStolen.php");
                                 loading.closeLoading();
                                 carStolen = CarStolenModel.fromjson(result);
                                 carStolenIntent.putExtra("carstolen",carStolen);
@@ -95,14 +95,14 @@ public class SearchFragment extends Fragment {
                         thread = new Thread() {
                             @Override
                             public void run() {
-                                if(Absy.isInternetWorking()){
+                                if(Utils.isInternetWorking()){
                                 try {
                                     data = URLEncoder.encode("searchtext", "UTF-8")
                                             + "=" + URLEncoder.encode(searchText.getText().toString().trim(), "UTF-8");
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
-                                result = Conn.sendHttpRequest(data,Absy.url+"andriod/Wanted.php");
+                                result = Conn.sendHttpRequest(data, Utils.url+"andriod/Wanted.php");
                                 loading.closeLoading();
                                 wanted = WantedModel.fromjson(result);
                                 if (wanted == null)

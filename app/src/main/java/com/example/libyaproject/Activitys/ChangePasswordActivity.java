@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Conn;
 import com.example.libyaproject.Models.UserModel;
 import com.example.libyaproject.R;
@@ -62,7 +62,7 @@ public class ChangePasswordActivity extends Activity {
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
-                                result = Conn.sendHttpRequest(data, Absy.url + "andriod/ChangePassword.php");
+                                result = Conn.sendHttpRequest(data, Utils.url + "andriod/ChangePassword.php");
 
                                 if (user.rq.equals("1"))
                                     Snackbar.make(view, "لقد تم تغير كلمة المرور", Snackbar.LENGTH_LONG).show();

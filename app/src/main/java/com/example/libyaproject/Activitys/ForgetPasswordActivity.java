@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Conn;
 import com.example.libyaproject.Loading;
 import com.example.libyaproject.Models.UserModel;
@@ -48,14 +48,14 @@ public class ForgetPasswordActivity extends Activity {
                 thread = new Thread(){
                     @Override
                     public void run() {
-                        if(Absy.isInternetWorking()){
+                        if(Utils.isInternetWorking()){
                         try {
                             data = URLEncoder.encode("username", "UTF-8")
                                     + "=" + URLEncoder.encode(username.getText().toString().trim(), "UTF-8");
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
-                        result = Conn.sendHttpRequest(data,Absy.url+"andriod/ForgotPassword.php");
+                        result = Conn.sendHttpRequest(data, Utils.url+"andriod/ForgotPassword.php");
 
                         if(result.equals("Not Found"))
                             Snackbar.make(v,"الحساب غير موجود", Snackbar.LENGTH_LONG).show();

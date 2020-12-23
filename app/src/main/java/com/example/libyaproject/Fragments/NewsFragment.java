@@ -17,7 +17,7 @@ import android.widget.ListView;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.example.libyaproject.Absy;
+import com.example.libyaproject.Utils;
 import com.example.libyaproject.Conn;
 import com.example.libyaproject.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,7 +51,7 @@ public class NewsFragment extends Fragment {
         newNews =new ArrayList();
         timer = new Timer();
 
-        oldNews.addAll(Absy.read(getContext()));
+        oldNews.addAll(Utils.read(getContext()));
 
         adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, oldNews);
         listView.setAdapter(adapter);
@@ -60,15 +60,15 @@ public class NewsFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
-                if(Absy.isInternetWorking()){
+                if(Utils.isInternetWorking()){
                 try {
                     data = URLEncoder.encode("searchtext", "UTF-8")
                             + "=" + URLEncoder.encode("", "UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                result = Conn.sendHttpRequest(data,Absy.url+"andriod/GetNews.php");
-                newNews = Absy.arrayjsonTOarraylist(result);
+                result = Conn.sendHttpRequest(data, Utils.url+"andriod/GetNews.php");
+                newNews = Utils.arrayjsonTOarraylist(result);
                 if (newNews != null){
                         if(!oldNews.equals(newNews)){
                             String CHANNEL_ID="MYCHANNEL";
@@ -85,7 +85,7 @@ public class NewsFragment extends Fragment {
                             notificationManager.createNotificationChannel(notificationChannel);
                             notificationManager.notify(1,notification);
                         }
-                        Absy.write(getContext(),newNews);
+                        Utils.write(getContext(),newNews);
                         activity.runOnUiThread(()->{
                         oldNews.clear();
                         oldNews.addAll(newNews);
