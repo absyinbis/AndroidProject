@@ -14,7 +14,7 @@ public class Conn {
     public static String sendHttpRequest(String params,String link){
         String result = "";
         try {
-            Log.e("start conn", params);
+            //Log.e("start conn", params);
             URL url = new URL(link);
 
             HttpURLConnection connection;

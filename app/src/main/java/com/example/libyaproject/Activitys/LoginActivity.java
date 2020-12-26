@@ -93,7 +93,6 @@ public class LoginActivity extends Activity {
                                     return;
                                 }
                                 intent.putExtra("user",user);
-                                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
                             }
