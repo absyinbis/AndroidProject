@@ -59,6 +59,10 @@ public class SearchFragment extends Fragment {
                         thread = new Thread(){
                             @Override
                             public void run() {
+                                if(TextUtils.isEmpty(searchText.getText())){
+                                    Snackbar.make(v, "الرجاء ادخال جميع الحقول", Snackbar.LENGTH_LONG).show();
+                                    return;
+                                }
                                 if(Utils.isInternetWorking()){
                                 try {
                                     data = URLEncoder.encode("searchtext", "UTF-8")
@@ -70,6 +74,7 @@ public class SearchFragment extends Fragment {
                                 loading.closeLoading();
                                 carStolen = CarStolenModel.fromjson(result);
                                 carStolenIntent.putExtra("carstolen",carStolen);
+                                searchText.setText("");
                                 startActivity(carStolenIntent);
                                 }
                                 else{
@@ -109,6 +114,7 @@ public class SearchFragment extends Fragment {
                                     Snackbar.make(v,"الرقم الوطني غير صحيح", Snackbar.LENGTH_SHORT).show();
                                 else {
                                     wantedIntent.putExtra("wanted",wanted);
+                                    searchText.setText("");
                                     startActivity(wantedIntent);
                                 }
                             }

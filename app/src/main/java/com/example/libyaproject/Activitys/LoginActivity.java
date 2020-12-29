@@ -110,9 +110,7 @@ public class LoginActivity extends Activity {
 
         forgetpassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(fpIntent);
-            }
+            public void onClick(View v) { startActivity(fpIntent); }
         });
     }
 

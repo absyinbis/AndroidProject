@@ -56,7 +56,7 @@ public class ForgetPasswordActivity extends Activity {
                             e.printStackTrace();
                         }
                         result = Conn.sendHttpRequest(data, Utils.url+"andriod/ForgotPassword.php");
-
+                        loading.closeLoading();
                         if(result.equals("Not Found"))
                             Snackbar.make(v,"الحساب غير موجود", Snackbar.LENGTH_LONG).show();
                         else

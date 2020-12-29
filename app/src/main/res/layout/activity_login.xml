@@ -47,7 +47,7 @@
                 android:layout_marginRight="17dp"
                 android:maxLines="1"
                 android:inputType="text"
-                android:textDirection="rtl"
+
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
@@ -74,12 +74,11 @@
             android:layout_marginTop="12.7dp"
             android:background="@drawable/blue_border_rounded_cornwe">
 
-            <!-- INPUT -->
             <EditText
                 android:id="@+id/password"
                 android:layout_toLeftOf="@+id/icon"
-                android:hint="كلمة المرور"
-                android:imeOptions="actionDone"
+                android:hint="اسم المستخدم"
+                android:imeOptions="actionNext"
                 android:textSize="12sp"
                 android:paddingLeft="17dp"
                 android:paddingTop="15dp"
@@ -87,7 +86,7 @@
                 android:layout_marginRight="17dp"
                 android:maxLines="1"
                 android:inputType="textPassword"
-                android:textDirection="rtl"
+                android:gravity="right"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"

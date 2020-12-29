@@ -61,6 +61,7 @@ public class SmsCodeActivity extends Activity {
                             e.printStackTrace();
                         }
                         result = Conn.sendHttpRequest(data, Utils.url+"andriod/CheckCode.php");
+                        loading.closeLoading();
                         if(result.equals("yes"))
                             startActivity(intent);
                         else

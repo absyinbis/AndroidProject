@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class Utils {
 
 
-    public static String url = "http://192.168.43.222:8012/LibyaProject/";
+    public static String url = "http://192.168.1.4:8012/LibyaProject/";
 
     public static boolean isInternetWorking() {
         boolean success = false;
