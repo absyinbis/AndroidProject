@@ -106,6 +106,8 @@ public class NewsFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        NotificationManager nManager = ((NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE));
+        nManager.cancelAll();
         timer.cancel();
     }
 }
